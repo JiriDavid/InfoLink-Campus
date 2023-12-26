@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Info-Link Home Page</title>
+  <link rel="stylesheet" href="assets/css/styes.css">
+</head>
+<body>
+  <nav>
+      <img src="assets/images/logo.png" alt="college logo" width="80px">
+      <ul>
+        <li><a href="">INSERT</a></li>
+        <li><a href="">VIEW</a></li>
+        <li><a href="">DELETE</a></li>
+        <li><a href="">UPDATE</a></li>
+        <li><a href="">INFO</a></li>
+      </ul>
+  </nav>
+  <main>
+    <form  onsubmit="return validateForm()" name="myForm" id="myForm">
+      <div class="login-text"><label>Login</label></div><br><br>
+      <fieldset>
+        <label for="username" class="label1">Username:</label>
+        <input type="text" name="username"><br>
+        <span id="nameErrorText"></span>
+      </fieldset>
+      <fieldset>
+        <label for="lname" class="label1">Password: </label>
+        <input type="text" name="password"><br><br>
+        <span id="pass_error_text"></span>
+      </fieldset>
+      <button class="login-button" type="submit">Login</button>
+    </form>
+  </main>
+  <footer>
+
+  </footer>
+
+  <script>
+    function validateForm(){
+      let username = document.forms["myForm"]["username"].value;
+      let password = document.forms["myForm"]["password"].value;
+      let error_text = document.getElementById("nameErrorText").value;
+      var pattern = /^[a-zA-Z0-9 ]*$/;
+      if(username == ""){
+        document.getElementById("nameErrorText").innerHTML = "Please enter name!"
+        return false;
+      }
+
+      if(username.length > 30){
+        document.getElementById("nameErrorText").innerHTML = "name must be less than 30 charactors"
+        return false;
+      }
+      // Test the user input against the pattern
+      if (pattern.test(username)) {
+        document.getElementById("nameErrorText").innerHTML = "only special charactors allowed"
+        return false;
+      }
+
+      if(password == ""){
+        document.getElementById("pass_error_text").innerHTML = "Please enter password!"
+        return false;
+      }
+      if(password.length > 30){
+        document.getElementById("pass_error_text").innerHTML = "only less than 30 charactors allowed!"
+        return false;
+      }
+
+      if (pattern.test(password)) {
+        document.getElementById("pass_error_text").innerHTML = "only special charactors allowed"
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>

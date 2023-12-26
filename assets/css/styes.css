@@ -1,0 +1,97 @@
+body {
+  text-align: center;
+  background-color: azure;
+}
+a {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s ease-in-out;
+}
+button {
+  padding: 4px;
+  background-color: aqua;
+  width: 150px;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+}
+nav {
+  display: inline-flex;
+  border-radius: 20px;
+  border: 1px solid aquamarine;
+  padding: 10px;
+}
+ul {
+  list-style-type: none;
+  display: flex;
+}
+li {
+  margin-right: 20px;
+}
+
+
+
+/*styles for the login page*/
+form {
+  width: 25%;
+  border: 1.5px solid black;
+  align-content:center;
+  text-align: center;
+  padding: 20px;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  background-image: url("../images/logo.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.label1 {
+  font-family: Times New Romain;
+  font-size: 16px;
+  color: black;
+}
+
+.login-text {
+  font-family: Arial;
+  font-size: 30px;
+  border: 1px solid black;
+  border-radius: 8px;
+  color: rgb(0, 255, 26);
+  background-color: rgb(35, 10, 173);
+  width: 90px;
+  padding: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.login-button {
+  color: rgb(0, 255, 26);
+  background-color: rgb(16, 60, 147);
+  width: 90px;
+  height: 35px;
+  padding: 2px;
+  margin-right: 10px;
+  border-radius: 15px;
+}
+
+.form-section {
+height: 600px;
+background-repeat: no-repeat;
+background-size: cover;
+}
+button:hover {
+  color: black;
+  font-weight: bolder;
+  background-color: rgb(10, 88, 205);
+}
+fieldset {
+  border: none;
+}
+span {
+  color: red;
+  font-size: 12px;
+}

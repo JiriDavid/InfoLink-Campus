@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    form {
+      width: 30%;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 13px;
+      padding: 18px;
+      box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      font-family: 'Poppins', sans-serif;
+    }
+    fieldset {
+      display: flex;
+      border: none;
+    }
+    label {
+      display: block;
+      width: 150px;
+    }
+    button{
+      padding: 2px;
+      margin-bottom: 5px;
+      background-color: aqua;
+      width: 100px;
+      height: 35px;
+      border-radius: 8px;
+      font-size: 15px;
+      border: none;
+      box-shadow: 2px 2px 4px 2px rgba(104, 29, 29, 0.5);
+    }
+    h2 {
+      text-align: center;
+    }
+    .cb {
+      margin-left: 8px;
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya&family=Lato&family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+  <title>Student-Registration-form</title>
+</head>
+<body>
+  <div>
+    <form onsubmit="return validateForm()" name="myForm" id="myForm">
+      <h2>Student Registration Form</h2>
+      <fieldset>
+        <label for="name" >Name</label>
+        <input type="text" name="studentName" oninput="convertToUpperCase(this)"><br>
+        <span id="name_error_text"></span>
+      </fieldset>
+      <fieldset>
+        <label for="father-name">Father's Name</label>
+        <input type="text" name="fathersName" oninput="convertToUpperCase(this)"><br>
+        <span id="mothers_name_error_text"></span>
+      </fieldset>
+      <fieldset>
+        <label for="mother-name">Mother's Name</label>
+        <input type="text" name="mothersName" oninput="convertToUpperCase(this)"><br>
+        <span id="fathers_name_error_text"></span>
+      </fieldset>
+      <fieldset>
+        <label for="gender">Gender</label>
+        <input type="radio" name="gender" value="male">Male
+        <input type="radio" name="gender" value="female">Female <br>
+        <span id="gemter_error_text"></span>
+      </fieldset>
+      <fieldset>
+        <label for="dob">DOB</label>
+        <input type="date" name="dob"> <br>
+        <span id="dob_error_text"></span>
+      </fieldset>
+      <fieldset>
+        <label for="address">Address</label>
+        <textarea name="address" name="address" cols="20" rows="6"></textarea> <br>
+        <span id="addess_error_text"></span>
+      </fieldset>
+      
+      <fieldset>
+        <label for="phone">Phone no.</label>
+        <input type="tel" name="phone" oninput="restrictNonNumValues(this)"> <br>
+        <span id="phone_error_text"></span>
+      </fieldset>
+      <fieldset>
+        <label for="email">Email</label>
+        <input type="email" name="email"> <br>
+        <span id="email_error_text"></span>
+      </fieldset>
+      <fieldset>
+        <label for="qualification">Qualification</label>
+        <input type="checkbox" id="grade11" name="options" >11<sup>th</sup>
+        <input type="checkbox" id="grade12" class="cb" name="options">12<sup>th</sup>
+        <input type="checkbox" id="graduation" class="cb" name="options">Graduation <br>
+        <span id="qualification_error_text"></span>
+      </fieldset>
+      <fieldset>
+        <label for="userName">UserName</label>
+        <input type="text" name="userName"><br>
+        <span id="username_error_text"></span>
+      </fieldset>
+      <fieldset>
+        <label for="password">Password</label>
+        <input type="password" name="password"> <br>
+        <span id="password_error_text"></span>
+      </fieldset>
+      <fieldset>
+        <label for="retypePassword">Retype Password</label>
+        <input type="password" name="retypePassword"> <br>
+        <span id="retype_password_error_text"></span>
+      </fieldset>
+      <button type="submit">submit</button>
+    </form>
+  </div>
+
+  <script>
+    
+    let mothersName = document.forms["myForm"]["mothersName"].value;
+    let studentName = document.forms["myForm"]["studentName"].value;
+    let fathersName = document.forms["myForm"]["fathersName"].value;
+
+
+    function validateForm(){
+      validateName();
+      //validateFathersName();
+      //validateMothersName();
+      //validateGender();
+      //validateDoB();
+      //validateAddress();
+      //validatePhoneNo();
+      //validateEmailId();
+      //validateQualification();
+      //validateUserName();
+      //validatePassword();
+      //validateRetypedPassword();
+      }
+// student name validation
+      function validateName(){
+        let studentName = document.forms["myForm"]["studentName"].value;
+        const pattern = /^[a-zA-Z0-9 ]*$/;
+        if(studentName.length >= 30){
+          document.getElementById("name_error_text").innerHTML = "30 and less charactors allowed"
+          return false;
+        }
+        if(studentName == ''){
+          document.getElementById("name_error_text").innerHTML = "enter name"
+          return false
+        }
+        if (!pattern.test(studentName)) {
+        document.getElementById("name_error_text").innerHTML = "only special charactors allowed"
+        return false;
+      }
+
+        let digits = ['0','1','2','3','4','5','6','7','8','9'];
+        for (let i = 0; i < studentNameArray.length; i++) {
+          for (let j = 0; j < digits.length; j++) {
+           if (studentNameArray[i] === digits[j]) {
+             alert("Name should not contain numbers");
+             return false;
+            }
+          }
+        }
+      }
+
+//fathers name validation
+      function validateFathersName(){
+        let fathersName = document.forms["myForm"]["fathersName"].value;
+        let studentName = document.forms["myForm"]["studentName"].value;
+        let fathersNameArray1 = document.forms["myForm"]["fathersName"].value.split(" ");
+        if(fathersName.length >= 30){
+          alert("name should be less than 30");
+          return false;
+        }
+        if(fathersName == ''){
+          alert("please enter faher's name")
+          return false
+        }
+
+        let fathersNameArray = fathersName.split('');
+        const specialChars = ['/','[','!','@','%','^','&','*','_','+','\\','-','=',']','{','}',':',';','|',',','.','<','>','?','"',"'",'`','~','#','$'];
+        for (let i = 0; i < fathersNameArray.length; i++) {
+          for (let j = 0; j < specialChars.length; j++) {
+           if (fathersNameArray[i] === specialChars[j]) {
+             alert("Name should not contain special characters");
+             return false;
+            }
+          }
+        }
+
+        let digits = ['0','1','2','3','4','5','6','7','8','9'];
+        for (let i = 0; i < fathersNameArray.length; i++) {
+          for (let j = 0; j < digits.length; j++) {
+           if (fathersNameArray[i] === digits[j]) {
+             alert("Name should not contain numbers");
+             return false;
+            }
+          }
+        }
+        let studentNameArray = document.forms["myForm"]["studentName"].value.split(" ");
+        let isSurnameSame = false;
+        for(let i = 0; i < studentNameArray.length; i++){
+        console.log(studentNameArray[i]);
+        if(fathersNameArray1.includes(studentNameArray[i])){
+          isSurnameSame = true;
+        }
+       }
+       if(isSurnameSame === false){
+        alert("Father's last name should match student last name");
+        return false;
+      }
+      }
+
+      //mothers name validation
+      function validateMothersName(){
+        let mothersName = document.forms["myForm"]["mothersName"].value;
+        if(mothersName.length >= 30){
+          alert("name should be less than 30");
+          return false;
+        }
+        if(mothersName == ''){
+          alert("please enter mothers name")
+          return false
+        }
+
+        let mothersNameArray = mothersName.split('');
+        const specialChars = ['/','[','!','@','%','^','&','*','_','+','\\','-','=',']','{','}',':',';','|',',','.','<','>','?','"',"'",'`','~','#','$'];
+        for (let i = 0; i < mothersNameArray.length; i++) {
+          for (let j = 0; j < specialChars.length; j++) {
+           if (mothersNameArray[i] === specialChars[j]) {
+             alert("Name should not contain special characters");
+             return false;
+            }
+          }
+        }
+
+        let digits = ['0','1','2','3','4','5','6','7','8','9'];
+        for (let i = 0; i < mothersNameArray.length; i++) {
+          for (let j = 0; j < digits.length; j++) {
+           if (mothersNameArray[i] === digits[j]) {
+             alert("Name should not contain numbers");
+             return false;
+            }
+          }
+        }
+
+        //validate last name
+        let mothersNameArray1 = document.forms["myForm"]["mothersName"].value.split(" ");
+        let studentNameArray = document.forms["myForm"]["studentName"].value.split(" ");
+        let isSurnameSame = false;
+        for(let i = 0; i < studentNameArray.length; i++){
+        console.log(studentNameArray[i]);
+        if(mothersNameArray1.includes(studentNameArray[i])){
+          isSurnameSame = true;
+        }
+       }
+       if(isSurnameSame === false){
+        alert("Mother's last name should match student last name");
+        return false;
+      }
+      }
+
+
+//Gender Validation
+      function validateGender(){
+        let selectedOption = document.forms["myForm"]["gender"].value;
+        if(!selectedOption){
+        alert("Please select Gender!");
+        return false;
+      }
+      }
+//validate DOB
+      function validateDoB(){
+        let dob = document.forms["myForm"]["dob"].value;
+        if(dob == ""){
+          alert("please anter date of birth");
+          return 0;
+        }
+        let today = new Date();
+        let inputDate = new Date(dob);
+        let age = today.getFullYear() - inputDate.getFullYear();
+
+        // Adjust age based on the month and day
+        if (today.getMonth() < inputDate.getMonth() || 
+        (today.getMonth() == inputDate.getMonth() && today.getDate() < inputDate.getDate())) {
+        age--;
+      }
+
+      // Validate if age is less than a certain value (e.g., 18)
+      if (age > 50 || age < 17) {
+        alert("Age should be in range 18-49");
+        return false;
+      }
+      }
+
+      // validate address
+      function validateAddress(){
+        let address = document.forms["myForm"]["address"].value;
+        if(address.length >= 30){
+          alert("addess should be less than 30 charactors");
+          return false;
+        }
+        if(address == ''){
+          alert("please enter your address")
+          return false
+        }
+        let addressArray = address.split('');
+        const specialChars = ['/','[','!','@','%','^','&','*','_','+','\\','-','=',']','{','}',':',';','|',',','.','<','>','?','"',"'",'`','~','#','$'];
+        for (let i = 0; i < addressArray.length; i++) {
+          for (let j = 0; j < specialChars.length; j++) {
+           if (addressArray[i] === specialChars[j]) {
+             alert("Address should not contain special characters");
+             return false;
+            }
+          }
+        }
+      }
+
+      function validatePhoneNo(){
+        let phone = document.forms["myForm"]["phone"].value;
+        if(phone == ''){
+          alert("please enter phone number");
+          return false
+        }
+        if(phone.length != 10){
+          alert("phone enumber should have 10 digits");
+          return false;
+        }
+      }
+
+      function validateEmailId(){
+        let email = document.forms["myForm"]["email"].value;
+        if(email == ""){
+          alert("Enter email please");
+          return false;
+        }
+        let emailRegex = /^\S+@\S+\.\S+$/;
+        let emailRegex2 = /^.{6,30}@.+$/;
+        if (!emailRegex.test(email)){
+          alert("Invalid Email format");
+          return false
+        }
+        if (!emailRegex2.test(email)){
+          alert("Put atleast 6 charactors before the @ symbol");
+          return false
+        }
+        
+      }
+
+      function validateQualification(){
+        let checkboxes = document.getElementsByName('options');
+        let isChecked = false;
+
+        for (var i = 0; i < checkboxes.length; i++) {
+          if (checkboxes[i].checked) {
+            isChecked = true;
+            break;
+          }
+        }
+
+      if (!isChecked) {
+        alert("Please select qualification")
+        return false;
+      } 
+      }
+
+      //validate user name
+      function validateUserName(){
+        let userName = document.forms["myForm"]["userName"].value;
+        if(userName == ''){
+          alert("Please enter userName");
+          return false;
+        }
+        if(userName.length > 30){
+          alert("user name should be below 30 charactors");
+          return false;
+        }
+      }
+
+      //validate Password
+      function validatePassword(){
+        let password = document.forms["myForm"]["password"].value;
+        if(password == ''){
+          alert("Please enter password");
+          return false;
+        }
+        if(password.length > 30 || password.length < 8){
+          alert("password should have 9-29 charactors");
+          return false;
+        }
+        let specialCharRegex = /^[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/;
+
+        if (!specialCharRegex.test(password)) {
+          alert('Password should only contain special characters');
+          return false;
+        }
+      }
+
+      // validate retype password
+      function validateRetypedPassword(){
+        let password = document.forms["myForm"]["password"].value;
+        let retypePassword = document.forms["myForm"]["retypePassword"].value;
+        if(password != retypePassword){
+          alert("passwords do not match");
+          return false;
+        }
+      }
+      function convertToUpperCase(input){
+        input.value = input.value.toUpperCase();
+      }
+      function restrictNonNumValues(input){
+        input.addEventListener('input', function(event) {
+        var inputElement = event.target;
+        var newValue = inputElement.value.replace(/\D/g, ''); // Remove non-digit characters
+        inputElement.value = newValue;
+    });
+      }
+
+    
+  </script>
+</body>
+</html>
