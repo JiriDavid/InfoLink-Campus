@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +22,7 @@
     }
     label {
       display: block;
-      width: 150px;
+      width: 200px;
     }
     button{
       padding: 2px;
@@ -48,71 +49,60 @@
 </head>
 <body>
   <div>
-    <form onsubmit="return validateForm()" name="myForm" id="myForm">
+    <form onsubmit="return validateForm()" name="myForm" id="myForm" action="connect.php" method="POST">
       <h2>Student Registration Form</h2>
       <fieldset>
         <label for="name" >Name</label>
-        <input type="text" name="studentName" oninput="convertToUpperCase(this)"><br>
-        <span id="name_error_text"></span>
+        <input type="text" name="studentName" oninput="convertToUpperCase(this)"> <br>
+        <span id="name_error_msg"></span>
       </fieldset>
       <fieldset>
         <label for="father-name">Father's Name</label>
-        <input type="text" name="fathersName" oninput="convertToUpperCase(this)"><br>
-        <span id="mothers_name_error_text"></span>
+        <input type="text" name="fathersName" oninput="convertToUpperCase(this)">
       </fieldset>
       <fieldset>
         <label for="mother-name">Mother's Name</label>
-        <input type="text" name="mothersName" oninput="convertToUpperCase(this)"><br>
-        <span id="fathers_name_error_text"></span>
+        <input type="text" name="mothersName" oninput="convertToUpperCase(this)">
       </fieldset>
       <fieldset>
         <label for="gender">Gender</label>
         <input type="radio" name="gender" value="male">Male
-        <input type="radio" name="gender" value="female">Female <br>
-        <span id="gemter_error_text"></span>
+        <input type="radio" name="gender" value="female">Female
       </fieldset>
       <fieldset>
         <label for="dob">DOB</label>
-        <input type="date" name="dob"> <br>
-        <span id="dob_error_text"></span>
+        <input type="date" name="dob">
       </fieldset>
       <fieldset>
         <label for="address">Address</label>
-        <textarea name="address" name="address" cols="20" rows="6"></textarea> <br>
-        <span id="addess_error_text"></span>
+        <textarea name="address" name="address" cols="30" rows="6"></textarea>
       </fieldset>
       
       <fieldset>
         <label for="phone">Phone no.</label>
-        <input type="tel" name="phone" oninput="restrictNonNumValues(this)"> <br>
-        <span id="phone_error_text"></span>
+        <input type="tel" name="phoneNo" oninput="restrictNonNumValues(this)">
       </fieldset>
       <fieldset>
         <label for="email">Email</label>
-        <input type="email" name="email"> <br>
-        <span id="email_error_text"></span>
+        <input type="email" name="email">
       </fieldset>
       <fieldset>
-        <label for="qualification">Qualification</label>
-        <input type="checkbox" id="grade11" name="options" >11<sup>th</sup>
-        <input type="checkbox" id="grade12" class="cb" name="options">12<sup>th</sup>
-        <input type="checkbox" id="graduation" class="cb" name="options">Graduation <br>
-        <span id="qualification_error_text"></span>
+        <label for="mother-name">Qualification</label>
+        <input type="checkbox" id="grade11" name="qualification" value="grade11">11<sup>th</sup>
+        <input type="checkbox" id="grade12" class="cb" name="qualification" value="grade12">12<sup>th</sup>
+        <input type="checkbox" id="graduation" class="cb" name="qualification" value="graduation">Graduation
       </fieldset>
       <fieldset>
         <label for="userName">UserName</label>
-        <input type="text" name="userName"><br>
-        <span id="username_error_text"></span>
+        <input type="text" name="userName">
       </fieldset>
       <fieldset>
         <label for="password">Password</label>
-        <input type="password" name="password"> <br>
-        <span id="password_error_text"></span>
+        <input type="password" name="password">
       </fieldset>
       <fieldset>
         <label for="retypePassword">Retype Password</label>
-        <input type="password" name="retypePassword"> <br>
-        <span id="retype_password_error_text"></span>
+        <input type="password" name="retypePassword">
       </fieldset>
       <button type="submit">submit</button>
     </form>
@@ -142,19 +132,25 @@
 // student name validation
       function validateName(){
         let studentName = document.forms["myForm"]["studentName"].value;
-        const pattern = /^[a-zA-Z0-9 ]*$/;
         if(studentName.length >= 30){
-          document.getElementById("name_error_text").innerHTML = "30 and less charactors allowed"
+          alert("name should be less than 30 charactors");
           return false;
         }
         if(studentName == ''){
-          document.getElementById("name_error_text").innerHTML = "enter name"
+          document.getElementById("name_error_msg").innerHTML = "Enter name please!"
           return false
         }
-        if (!pattern.test(studentName)) {
-        document.getElementById("name_error_text").innerHTML = "only special charactors allowed"
-        return false;
-      }
+
+        let studentNameArray = studentName.split('');
+        const specialChars = ['/','[','!','@','%','^','&','*','_','+','\\','-','=',']','{','}',':',';','|',',','.','<','>','?','"',"'",'`','~','#','$'];
+        for (let i = 0; i < studentNameArray.length; i++) {
+          for (let j = 0; j < specialChars.length; j++) {
+           if (studentNameArray[i] === specialChars[j]) {
+             alert("Name should not contain special characters");
+             return false;
+            }
+          }
+        }
 
         let digits = ['0','1','2','3','4','5','6','7','8','9'];
         for (let i = 0; i < studentNameArray.length; i++) {

@@ -42,7 +42,7 @@
       let username = document.forms["myForm"]["username"].value;
       let password = document.forms["myForm"]["password"].value;
       let error_text = document.getElementById("nameErrorText").value;
-      var pattern = /^[a-zA-Z0-9 ]*$/;
+      let pattern = /^[a-zA-Z0-9 ]*$/;
       if(username == ""){
         document.getElementById("nameErrorText").innerHTML = "Please enter name!"
         return false;
