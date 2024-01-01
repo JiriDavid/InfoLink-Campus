@@ -4,51 +4,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-    form {
-      width: 30%;
-      margin-left: auto;
-      margin-right: auto;
-      font-size: 13px;
-      padding: 18px;
-      box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.5);
-      border-radius: 10px;
-      font-family: 'Poppins', sans-serif;
-    }
-    fieldset {
-      display: flex;
-      border: none;
-    }
-    label {
-      display: block;
-      width: 200px;
-    }
-    button{
-      padding: 2px;
-      margin-bottom: 5px;
-      background-color: aqua;
-      width: 100px;
-      height: 35px;
-      border-radius: 8px;
-      font-size: 15px;
-      border: none;
-      box-shadow: 2px 2px 4px 2px rgba(104, 29, 29, 0.5);
-    }
-    h2 {
-      text-align: center;
-    }
-    .cb {
-      margin-left: 8px;
-    }
-  </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alegreya&family=Lato&family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styes.css">
   <title>Student-Registration-form</title>
 </head>
 <body>
-  <div>
+  <nav>
+    <img src="assets/images/logo.png" alt="college logo" width="80px">
+    <ul>
+      <li><a href="insert.html">INSERT</a></li>
+      <li><a href="view.html">VIEW</a></li>
+      <li><a href="delete.html">DELETE</a></li>
+      <li><a href="update.html">UPDATE</a></li>
+      <li><a href="info.html">INFO</a></li>
+    </ul>
+</nav>
+  <div class="reg-form-container">
     <form onsubmit="return validateForm()" name="myForm" id="myForm" action="connect.php" method="POST">
       <h2>Student Registration Form</h2>
       <fieldset>
@@ -66,8 +36,8 @@
       </fieldset>
       <fieldset>
         <label for="gender">Gender</label>
-        <input type="radio" name="gender" value="male">Male
-        <input type="radio" name="gender" value="female">Female
+        <input type="radio" name="gender" value="male"> <span>Male</span>
+        <input type="radio" name="gender" value="female"> <span>Female</span>
       </fieldset>
       <fieldset>
         <label for="dob">DOB</label>
@@ -75,7 +45,7 @@
       </fieldset>
       <fieldset>
         <label for="address">Address</label>
-        <textarea name="address" name="address" cols="30" rows="6"></textarea>
+        <textarea name="address" name="address" cols="27" rows="6"></textarea>
       </fieldset>
       
       <fieldset>
@@ -88,9 +58,9 @@
       </fieldset>
       <fieldset>
         <label for="mother-name">Qualification</label>
-        <input type="checkbox" id="grade11" name="qualification" value="grade11">11<sup>th</sup>
-        <input type="checkbox" id="grade12" class="cb" name="qualification" value="grade12">12<sup>th</sup>
-        <input type="checkbox" id="graduation" class="cb" name="qualification" value="graduation">Graduation
+        <input type="checkbox" id="grade11" name="qualification" value="grade11"><span>11<sup>th</sup></span>
+        <input type="checkbox" id="grade12" class="cb" name="qualification" value="grade12"><span>12<sup>th</sup></span>
+        <input type="checkbox" id="graduation" class="cb" name="qualification" value="graduation"><span>Graduation</span>
       </fieldset>
       <fieldset>
         <label for="userName">UserName</label>
@@ -107,7 +77,6 @@
       <button type="submit">submit</button>
     </form>
   </div>
-
   <script>
     
     let mothersName = document.forms["myForm"]["mothersName"].value;
@@ -344,7 +313,6 @@
           alert("Put atleast 6 charactors before the @ symbol");
           return false
         }
-        
       }
 
       function validateQualification(){
