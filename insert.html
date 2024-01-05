@@ -8,6 +8,18 @@
   <title>Student-Registration-form</title>
 </head>
 <body>
+  <script>
+    function convertToUpperCase(input){
+        input.value = input.value.toUpperCase();
+      }
+      function restrictNonNumValues(input){
+        input.addEventListener('input', function(event) {
+        var inputElement = event.target;
+        var newValue = inputElement.value.replace(/\D/g, ''); // Remove non-digit characters
+        inputElement.value = newValue;
+    });
+      }  
+  </script>
   <nav>
     <img src="assets/images/logo.png" alt="college logo" width="80px">
     <ul>
@@ -78,7 +90,6 @@
     </form>
   </div>
   <script>
-    
     let mothersName = document.forms["myForm"]["mothersName"].value;
     let studentName = document.forms["myForm"]["studentName"].value;
     let fathersName = document.forms["myForm"]["fathersName"].value;
@@ -86,17 +97,17 @@
 
     function validateForm(){
       validateName();
-      //validateFathersName();
-      //validateMothersName();
-      //validateGender();
-      //validateDoB();
-      //validateAddress();
-      //validatePhoneNo();
-      //validateEmailId();
-      //validateQualification();
-      //validateUserName();
-      //validatePassword();
-      //validateRetypedPassword();
+      validateFathersName();
+      validateMothersName();
+      validateGender();
+      validateDoB();
+      validateAddress();
+      validatePhoneNo();
+      validateEmailId();
+      validateQualification();
+      validateUserName();
+      validatePassword();
+      validateRetypedPassword();
       }
 // student name validation
       function validateName(){
@@ -110,25 +121,16 @@
           return false
         }
 
-        let studentNameArray = studentName.split('');
-        const specialChars = ['/','[','!','@','%','^','&','*','_','+','\\','-','=',']','{','}',':',';','|',',','.','<','>','?','"',"'",'`','~','#','$'];
-        for (let i = 0; i < studentNameArray.length; i++) {
-          for (let j = 0; j < specialChars.length; j++) {
-           if (studentNameArray[i] === specialChars[j]) {
-             alert("Name should not contain special characters");
+        const specialCharsRegex = /^[a-zA-Z0-9]+$/;
+        if(specialCharsRegex.test(studentName)){
+          alert("Name should not contain special characters");
              return false;
-            }
-          }
         }
 
-        let digits = ['0','1','2','3','4','5','6','7','8','9'];
-        for (let i = 0; i < studentNameArray.length; i++) {
-          for (let j = 0; j < digits.length; j++) {
-           if (studentNameArray[i] === digits[j]) {
-             alert("Name should not contain numbers");
-             return false;
-            }
-          }
+        const numbersRegex = /\d/;
+        if (numbersRegex.test(studentName)) {
+          alert("Name should not contain numbers");
+          return false;
         }
       }
 
@@ -146,26 +148,18 @@
           return false
         }
 
-        let fathersNameArray = fathersName.split('');
-        const specialChars = ['/','[','!','@','%','^','&','*','_','+','\\','-','=',']','{','}',':',';','|',',','.','<','>','?','"',"'",'`','~','#','$'];
-        for (let i = 0; i < fathersNameArray.length; i++) {
-          for (let j = 0; j < specialChars.length; j++) {
-           if (fathersNameArray[i] === specialChars[j]) {
-             alert("Name should not contain special characters");
+        const specialCharsRegex = /^[a-zA-Z0-9]+$/;
+        if(specialCharsRegex.test(fathersName)){
+          alert("Father's name should not contain special characters");
              return false;
-            }
-          }
         }
 
-        let digits = ['0','1','2','3','4','5','6','7','8','9'];
-        for (let i = 0; i < fathersNameArray.length; i++) {
-          for (let j = 0; j < digits.length; j++) {
-           if (fathersNameArray[i] === digits[j]) {
-             alert("Name should not contain numbers");
-             return false;
-            }
-          }
+        const numbersRegex = /\d/;
+        if (numbersRegex.test(studentName)) {
+          alert("Fathers name should not contain numbers");
+          return false;
         }
+
         let studentNameArray = document.forms["myForm"]["studentName"].value.split(" ");
         let isSurnameSame = false;
         for(let i = 0; i < studentNameArray.length; i++){
@@ -192,25 +186,17 @@
           return false
         }
 
-        let mothersNameArray = mothersName.split('');
-        const specialChars = ['/','[','!','@','%','^','&','*','_','+','\\','-','=',']','{','}',':',';','|',',','.','<','>','?','"',"'",'`','~','#','$'];
-        for (let i = 0; i < mothersNameArray.length; i++) {
-          for (let j = 0; j < specialChars.length; j++) {
-           if (mothersNameArray[i] === specialChars[j]) {
-             alert("Name should not contain special characters");
+        const specialCharsRegex = /^[a-zA-Z0-9]+$/;
+        if(specialCharsRegex.test(mothersName)){
+          alert("Mother's name should not contain special characters");
              return false;
-            }
-          }
+        }
         }
 
-        let digits = ['0','1','2','3','4','5','6','7','8','9'];
-        for (let i = 0; i < mothersNameArray.length; i++) {
-          for (let j = 0; j < digits.length; j++) {
-           if (mothersNameArray[i] === digits[j]) {
-             alert("Name should not contain numbers");
-             return false;
-            }
-          }
+        const numbersRegex = /\d/;
+        if (numbersRegex.test(studentName)) {
+          alert("Mother's name should not contain numbers");
+          return false;
         }
 
         //validate last name
@@ -226,7 +212,6 @@
        if(isSurnameSame === false){
         alert("Mother's last name should match student last name");
         return false;
-      }
       }
 
 
@@ -273,17 +258,15 @@
           alert("please enter your address")
           return false
         }
-        let addressArray = address.split('');
-        const specialChars = ['/','[','!','@','%','^','&','*','_','+','\\','-','=',']','{','}',':',';','|',',','.','<','>','?','"',"'",'`','~','#','$'];
-        for (let i = 0; i < addressArray.length; i++) {
-          for (let j = 0; j < specialChars.length; j++) {
-           if (addressArray[i] === specialChars[j]) {
-             alert("Address should not contain special characters");
-             return false;
-            }
-          }
+
+        const specialCharsRegex = /^[a-zA-Z0-9]+$/;
+
+        if (specialCharsRegex.test(address)) {
+          alert("Address should not contain special characters");
+          return false;
         }
-      }
+}
+
 
       function validatePhoneNo(){
         let phone = document.forms["myForm"]["phone"].value;
@@ -356,7 +339,7 @@
           alert("password should have 9-29 charactors");
           return false;
         }
-        let specialCharRegex = /^[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/;
+        let specialCharRegex = /^[a-zA-Z0-9]+$/;
 
         if (!specialCharRegex.test(password)) {
           alert('Password should only contain special characters');
@@ -373,18 +356,6 @@
           return false;
         }
       }
-      function convertToUpperCase(input){
-        input.value = input.value.toUpperCase();
-      }
-      function restrictNonNumValues(input){
-        input.addEventListener('input', function(event) {
-        var inputElement = event.target;
-        var newValue = inputElement.value.replace(/\D/g, ''); // Remove non-digit characters
-        inputElement.value = newValue;
-    });
-      }
-
-    
   </script>
 </body>
 </html>

@@ -12,11 +12,13 @@ a {
 }
 .login-main button {
   padding: 4px;
-  background-color: aqua;
+  background-color: rgb(35, 13, 227);
   width: 150px;
   height: 40px;
   border-radius: 8px;
   border: none;
+  color: yellow;
+  font-size: 16px;
 }
 nav {
   display: inline-flex;
@@ -37,7 +39,7 @@ li {
 /*styles for the login page*/
 .login-main form {
   width: 25%;
-  border: 1.5px solid black;
+  border: 1.5px solid rgb(32, 210, 41);
   align-content:center;
   text-align: center;
   padding: 20px;
@@ -49,20 +51,22 @@ li {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
+.login-main input {
+  border: 2px solid rgb(13, 65, 16);;
+}
 .label1 {
   font-family: Times New Romain;
-  font-size: 16px;
+  font-size: 18px;
   color: black;
+  font-weight: bolder;
 }
 
 .login-text {
   font-family: Arial;
   font-size: 30px;
-  border: 1px solid black;
+  font-weight: bolder;
+  border: 2px solid rgb(48, 9, 140);
   border-radius: 8px;
-  color: rgb(0, 255, 26);
-  background-color: rgb(35, 10, 173);
   width: 90px;
   padding: 2px;
   padding-left: 10px;
@@ -71,8 +75,8 @@ li {
   margin-right: auto;
 }
 .login-button {
-  color: rgb(0, 255, 26);
-  background-color: rgb(16, 60, 147);
+  color: rgb(1, 11, 2);
+  background-color: rgb(35, 13, 227);
   width: 90px;
   height: 35px;
   padding: 2px;

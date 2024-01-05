@@ -3,9 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Delete Page</title>
+  <link rel="stylesheet" href="assets/css/styes.css">
 </head>
 <body>
-  
+  <nav>
+    <img src="assets/images/logo.png" alt="college logo" width="80px">
+    <ul>
+      <li><a href="insert.html">INSERT</a></li>
+      <li><a href="view.html">VIEW</a></li>
+      <li><a href="delete.html">DELETE</a></li>
+      <li><a href="update.html">UPDATE</a></li>
+      <li><a href="info.html">INFO</a></li>
+    </ul>
+  </nav>
+  <div class="delete-form-container">
+    <form action="delete.php" method="post">
+      <h2>Delete Student</h2>
+      <fieldset>
+        <label for="username">Username</label>
+        <input type="text" name="username" required>
+      </fieldset>
+      <fieldset>
+        <label for="password">Password</label>
+        <input type="password" name="password" required>
+      </fieldset>
+      <button type="submit">Delete</button>
+    </form>
+  </div>
 </body>
 </html>

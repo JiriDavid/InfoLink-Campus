@@ -21,23 +21,31 @@
   <div class="reg-form-container">
     <h2>Student Information</h2>
 
+    <form action="" method="GET">
+      <label for="registrationNumber">Enter Registration Number:</label>
+      <input type="text" name="student_id" id="registrationNumber" required>
+      <button type="submit">Get Information</button>
+    </form>
+
     <?php
-    // Connect to your database (replace these variables with your actual database credentials)
-    $servername = "your_servername";
-    $username = "your_username";
-    $password = "your_password";
-    $dbname = "your_dbname";
+// Connect to your database (replace these variables with your actual database credentials)
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "infolinkdb";
 
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    // Assuming you have a student ID (replace 'your_student_id' with the actual student ID)
-    $student_id = $_GET['student_id']; // You might want to validate and sanitize this input
+// Assuming you have a registration number entered by the user
+if(isset($_GET['student_id'])){
+    // You might want to validate and sanitize this input
+    $student_id = $_GET['student_id'];
 
     // Fetch student data from the database
     $sql = "SELECT * FROM students WHERE id = $student_id"; // Replace 'students' with your actual table name
@@ -61,10 +69,13 @@
     } else {
         echo "No data found for the specified student ID.";
     }
+}
 
-    // Close the database connection
-    $conn->close();
-    ?>
+// Close the database connection
+$conn->close();
+?>
+
+
 
   </div>
 </body>

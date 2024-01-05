@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sucess Page</title>
+  <title>view page</title>
   <link rel="stylesheet" href="assets/css/styes.css">
 </head>
 <body>
@@ -14,27 +14,12 @@
         <li><a href="view.html">VIEW</a></li>
         <li><a href="delete.html">DELETE</a></li>
         <li><a href="update.html">UPDATE</a></li>
-        <li><a href="info.html">INFO</a></li>
+        <li><a href="info.php">INFO</a></li>
       </ul>
   </nav>
-  <?php
-//connect to database
-$conn = mysqli('localhost','root','','studentinfo');
-
-//check if connection is successful
-if(!$conn){
-  die('Connection Failed : '.$conn->connect_error);
-}
-?>
   <header>
-    <h1>Student Info</h1>
+    <h1>Student Information</h1>
+    <?php include "retrieve.php"; ?>
   </header>
-  <main>
-    <section></section>
-    <section></section>
-  </main>
-  <footer>
-
-  </footer>
 </body>
 </html>
