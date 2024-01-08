@@ -10,8 +10,9 @@
   <nav>
     <img src="assets/images/logo.png" alt="college logo" width="80px">
     <ul>
+    <li><a href="main.html">MAIN</a></li>
       <li><a href="insert.html">INSERT</a></li>
-      <li><a href="view.html">VIEW</a></li>
+      <li><a href="retrieve.php">VIEW</a></li>
       <li><a href="delete.html">DELETE</a></li>
       <li><a href="update.html">UPDATE</a></li>
       <li><a href="info.html">INFO</a></li>
@@ -48,7 +49,7 @@ if(isset($_GET['student_id'])){
     $student_id = $_GET['student_id'];
 
     // Fetch student data from the database
-    $sql = "SELECT * FROM students WHERE id = $student_id"; // Replace 'students' with your actual table name
+    $sql = "SELECT * FROM studentinfo WHERE id = $student_id"; // Replace 'students' with your actual table name
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {

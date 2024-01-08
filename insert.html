@@ -23,6 +23,7 @@
   <nav>
     <img src="assets/images/logo.png" alt="college logo" width="80px">
     <ul>
+      <li><a href="main.html">MAIN</a></li>
       <li><a href="insert.html">INSERT</a></li>
       <li><a href="view.html">VIEW</a></li>
       <li><a href="delete.html">DELETE</a></li>
@@ -96,19 +97,16 @@
 
 
     function validateForm(){
-      validateName();
-      validateFathersName();
-      validateMothersName();
-      validateGender();
-      validateDoB();
-      validateAddress();
-      validatePhoneNo();
-      validateEmailId();
-      validateQualification();
-      validateUserName();
-      validatePassword();
-      validateRetypedPassword();
-      }
+    if (!validateName() || !validateFathersName() || !validateMothersName() || 
+        !validateGender() || !validateDoB() || !validateAddress() || 
+        !validatePhoneNo() || !validateEmailId() || !validateQualification()) {
+        // Returning false here will prevent the form from being submitted
+        return false;
+    }
+    // If all validations pass, the form will be submitted
+    return true;
+}
+
 // student name validation
       function validateName(){
         let studentName = document.forms["myForm"]["studentName"].value;

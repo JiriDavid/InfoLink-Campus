@@ -5,20 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Info-Link Home Page</title>
   <link rel="stylesheet" href="assets/css/styes.css">
+  <style>
+    span {
+      font-size: 13px;
+      font-weight: bolder;
+    }
+    footer {
+    background-color: #0f6423;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+  </style>
 </head>
 <body>
-  <nav>
     <img src="assets/images/logo.png" alt="college logo" width="80px">
-    <ul>
-      <li><a href="insert.html">INSERT</a></li>
-      <li><a href="view.html">VIEW</a></li>
-      <li><a href="delete.html">DELETE</a></li>
-      <li><a href="update.html">UPDATE</a></li>
-      <li><a href="info.html">INFO</a></li>
-    </ul>
-</nav>
+  <header>
+    <h2>Welcome to KIIT Self Servivce Portal</h2>
+  </header>
+
   <main class="login-main">
-    <form  onsubmit="return validateForm()" name="myForm" id="myForm">
+    <form  action="login.php" method="post" onsubmit="return validateForm()" name="myForm" id="myForm">
       <div class="login-text"><label>Login</label></div><br><br>
       <fieldset>
         <label for="username" class="label1">Username:</label>
@@ -31,10 +42,12 @@
         <span id="pass_error_text"></span>
       </fieldset>
       <button class="login-button" type="submit">Login</button>
+      <a href=""><span>Forgot Password?</span></a>
     </form>
+    <p>Don't have an Aaccount? <a href="insert.html">Register</a></p>
   </main>
   <footer>
-
+    &copy; 2024 KIIT University
   </footer>
 
   <script>
@@ -53,10 +66,10 @@
         return false;
       }
       // Test the user input against the pattern
-      if (pattern.test(username)) {
+      /*if (pattern.test(username)) {
         document.getElementById("nameErrorText").innerHTML = "only special charactors allowed"
         return false;
-      }
+      }*/
 
       if(password == ""){
         document.getElementById("pass_error_text").innerHTML = "Please enter password!"
@@ -67,10 +80,10 @@
         return false;
       }
 
-      if (pattern.test(password)) {
+      /*if (pattern.test(password)) {
         document.getElementById("pass_error_text").innerHTML = "only special charactors allowed"
         return false;
-      }
+      } */
     }
   </script>
 </body>

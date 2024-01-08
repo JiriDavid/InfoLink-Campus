@@ -7,6 +7,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
+      font-size: 13px;
       line-height: 1.6;
       margin: 0;
       padding: 0;
@@ -80,8 +81,9 @@ a {
   <nav>
     <img src="assets/images/logo.png" alt="college logo" width="80px">
     <ul>
+    <li><a href="main.html">MAIN</a></li>
       <li><a href="insert.html">INSERT</a></li>
-      <li><a href="view.html">VIEW</a></li>
+      <li><a href="view.php">VIEW</a></li>
       <li><a href="delete.html">DELETE</a></li>
       <li><a href="update.html">UPDATE</a></li>
       <li><a href="info.php">INFO</a></li>
@@ -114,6 +116,7 @@ a {
         // Output data in a table
         echo "<table>";
         echo "<tr>
+                <th>Registration No</th>
                 <th>Student Name</th>
                 <th>Father's Name</th>
                 <th>Mother's Name</th>
@@ -129,6 +132,7 @@ a {
 
         while ($row = $result->fetch_assoc()) {
             echo "<tr>
+                    <td>{$row["id"]}</td>
                     <td>{$row["studentName"]}</td>
                     <td>{$row["fathersName"]}</td>
                     <td>{$row["mothersName"]}</td>

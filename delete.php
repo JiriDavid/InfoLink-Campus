@@ -13,17 +13,18 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+    $id = $_POST["id"];
 
     // Validate username and password (add your validation logic here)
 
     // SQL query to delete data
-    $sql = "DELETE FROM studentinfo WHERE userName = '$username' AND password = '$password'";
+    $sql = "DELETE FROM studentinfo WHERE id = '$id'";
     if ($conn->query($sql) === TRUE) {
-        echo "Record deleted successfully";
+        header("Location: success.html?regNumber=" . urlencode($regNumber));
+        exit();
     } else {
-        echo "Error deleting record: " . $conn->error;
+        header("Location: error.html?regNumber=" . urlencode($regNumber));
+        exit();
     }
 }
 

@@ -11,22 +11,23 @@
   $userName = $_POST['userName'];
   $password = $_POST['password'];
 
-  //database connectivity
-
+  // database connectivity
   $conn = new mysqli('localhost','root','','infolinkdb');
   if($conn ->connect_error){
     die('Connection Failed : '.$conn->connect_error);
   } else {
     $stmt = $conn->prepare("insert into studentinfo (studentName, fathersName, mothersName, gender, dob, address, phoneNo, email, qualification, userName, password) values(?,?,?,?,?,?,?,?,?,?,?)");
     $stmt ->bind_param("ssssssissss", $studentName, $fathersName, $mothersName, $gender, $dob, $address, $phoneNo, $email, $qualification, $userName, $password);
-    $stmt-> execute();
+    
     if ($stmt->execute()) {
       // Registration success, redirect to success page
       header("Location: success.html");
       exit(); // Make sure to stop execution after redirect
-  } else {
+    } else {
+      // Redirect to error page if the execution fails
       header("Location: error.html");
-  }
+      exit();
+    }
 
     $stmt -> close();
     $conn -> close();

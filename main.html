@@ -5,27 +5,85 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Info-Link Home Page</title>
   <link rel="stylesheet" href="assets/css/styes.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #0e791e;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .options {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    select {
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    option {
+      background-color: #3ca26a;
+      color: #333;
+    }
+
+    .container {
+      text-align: center;
+      margin-top: 50px;
+    }
+    nav{
+     margin-top: 20px;
+     margin-bottom: 20px;
+   }
+  </style>
 </head>
 <body>
   <nav>
     <img src="assets/images/logo.png" alt="college logo" width="80px">
     <ul>
       <li><a href="insert.html">INSERT</a></li>
-      <li><a href="retrieve.php">VIEW</a></li>
+      <li><a href="view.php">VIEW</a></li>
       <li><a href="delete.html">DELETE</a></li>
       <li><a href="update.html">UPDATE</a></li>
-      <li><a href="info.html">INFO</a></li>
+      <li><a href="fetch_info_view.html">INFO</a></li>
     </ul>
-</nav>
+  </nav>
   <header>
-    <h1>Welcome to Info-Link </h1>
-  <h2>Manage Your Student Aaccount</h2>
-  <h3>To Insert new student details Follow this link</h3>
+    <h1>Student Information System</h1>
   </header>
-  <main>
-    <section></section>
-    <section></section>
-  </main>
+
+  <div class="options">
+    <select onchange="navigate()">
+      <option value="#" selected disabled>Select Operation here</option>
+      <option value="insert.html">Insert Student Information</option>
+      <option value="view.php">View Student Information</option>
+      <option value="delete.html">Delete Student Information</option>
+      <option value="update.html">Update Student Information</option>
+      <option value="info.php">Particular Student Information</option>
+    </select>
+  </div>
+
+  <div class="container">
+    <p>Choose an option from the dropdown menu to navigate:</p>
+  </div>
+
+  <script>
+    function navigate() {
+      var selectedOption = document.querySelector('select').value;
+      if (selectedOption !== '#') {
+        window.location.href = selectedOption;
+      }
+    }
+  </script>
   <footer>
   </footer>
 </body>

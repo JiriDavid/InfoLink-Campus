@@ -4,10 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>error page</title>
-  <link rel="stylesheet" href="assets/css/styes.css">
   <style>
     body {
       text-align: center;
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
     }
     a {
       text-decoration: none;
@@ -22,6 +24,7 @@
       height: 40px;
       border-radius: 8px;
       border: none;
+      margin-bottom: 20px;
     }
     nav {
       display: inline-flex;
@@ -39,12 +42,27 @@
     a:hover {
       color: #ffd700; /* Change to your preferred hover color */
     }
+    footer {
+    background-color: #0f6423;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.main_cont {
+  height: auto;
+  width: 100%;
+  margin: 20px 0 50px 0;
+}
   </style>
 </head>
 <body>
   <nav>
     <img src="assets/images/logo.png" alt="college logo" width="80px">
     <ul>
+      <li><a href="main.html">MAIN</a></li>
       <li><a href="insert.html">INSERT</a></li>
       <li><a href="view.html">VIEW</a></li>
       <li><a href="delete.html">DELETE</a></li>
@@ -52,10 +70,13 @@
       <li><a href="info.html">INFO</a></li>
     </ul>
 </nav>
-  <main>
+  <div class="main_cont">
     <img src="assets/images/oops-image.png" alt="oops photo">
-    <h2>Sorry, we  could not register you try again</h2>
+    <h2>Sorry, an error occured &#128557;</h2>
     <button type="button"><a href="main.html">GO TO HOME</a></button>
-  </main>
+  </div>
+  <footer>
+    &copy; 2024 KIIT University
+  </footer>
 </body>
 </html>
